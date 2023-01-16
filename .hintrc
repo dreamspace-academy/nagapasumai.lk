@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/name-role-value": "off",
+    "no-inline-styles": "off",
+    "axe/parsing": [
+      "default",
+      {
+        "marquee": "off"
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_chr <= 106",
+    "not chrome <= 107",
+    "not edge <= 106",
+    "not firefox <= 106",
+    "not safari <= 16.1",
+    "not samsung <= 18",
+    "not and_ff <= 105"
+  ]
+}

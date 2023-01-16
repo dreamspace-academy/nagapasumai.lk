@@ -40,6 +40,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  text-decoration: none !important;
+  text-transform: capitalize !important;
 }
 
 html {
