@@ -10,7 +10,8 @@
       {
         "marquee": "off"
       }
-    ]
+    ],
+    "button-type": "off"
   },
   "browserslist": [
     "defaults",

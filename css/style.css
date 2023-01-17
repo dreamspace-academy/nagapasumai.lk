@@ -54,7 +54,9 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
-
+.links:hover{
+color: #007bff;
+}
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
