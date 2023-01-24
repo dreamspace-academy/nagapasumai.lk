@@ -1,0 +1,29 @@
+.product-card {
+    margin: 4rem 0;
+    background: wheat;
+    color: white;
+    padding: 3rem 1.5rem;
+    display: flex;
+    gap: 1.4rem;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: 0 0 0.1rem white;
+}
+
+.product-image {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+}
+
+.add-to-cart {
+    display: inline-block;
+    color: white;
+    background: blue;
+    padding: 1.2rem 2.5rem;
+    border-radius: 1.2rem;
+}
