@@ -11,7 +11,15 @@
         "marquee": "off"
       }
     ],
-    "button-type": "off"
+    "button-type": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backface-visibility"
+        ]
+      }
+    ]
   },
   "browserslist": [
     "defaults",
