@@ -133,46 +133,80 @@ let Cart = document.querySelectorAll(".add-cart"); /* select all add-cart classe
 // Add cart
 for (let i = 0; i < Cart.length; i++) {
 
-    Cart[i].addEventListener('click', AddCart); /* call-back AddCart(); */
+    Cart[i].addEventListener('click', () => {
+        // console.log("Add To Cart is Running");
 
-
+        CartNumber(productList[i]);/* Call CartNumber(productList[i]); */
+    });
 }
 
-// function
-function AddCart() {
-    // console.log("AddCart is Running");
-    CartNumber();/* call-back CartNumber(); */
-}
 
-let CartNumber = () => {
-    let AddCartNumber = localStorage.getItem("cartNumber");
-    AddCartNumberInt = parseInt(AddCartNumber) /* convert string to number  */
-    // console.log(AddCartNumber);
+// Add cart function
+let CartNumber = (product) => {
+
+    /* productList[i] have product item { i = number :: eg = 1 , productList[i] => {name: 'A', price: 100, incart: 0} == product  } */
+    // console.log(`product Details is `, product)
+    let AddCartNumber = localStorage.getItem("cartNumber"); /* get to local storage */
+    let AddCartNumberInt = parseInt(AddCartNumber) /* convert string to number  */
 
     // add cart in localStorage
     if (AddCartNumberInt) {
-        localStorage.setItem('cartNumber', AddCartNumberInt + 1);
-        document.querySelector('.card-add span').textContent =  AddCartNumberInt + 1;
+        localStorage.setItem('cartNumber', AddCartNumberInt + 1); /* Add to local storage */
+        document.querySelector('.card-add span').textContent = AddCartNumberInt + 1;
     }
     else {
-        localStorage.setItem('cartNumber', 1);
+        localStorage.setItem('cartNumber', 1); /* Add to local storage */
         document.querySelector('.card-add span').textContent = 1;
     }
+    /* Call-back function */
+    AddCartProduct(product);
+}
 
+// list-out Add product function
+let AddCartProduct = (product) => {
+    let ProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
+    ProductItem = JSON.parse(ProductItem); /* convert JSON file formate to Js list */
+
+
+    if (ProductItem != null) {
+        switch (ProductItem != null) {
+            case ProductItem[product.name] == undefined:
+                ProductItem = {
+                    ...ProductItem, /* copy the ProductItem => add old ProductItem + new ProductItem */
+                    [product.name]: product /* Create JSON formate naming convention */
+                }
+                ProductItem[product.name].incart += 1;
+                break;
+            case ProductItem[product.name] === ProductItem[product.name]:
+                product.incart = 1
+                alert("no")
+                break;
+            default:
+                break;
+        }
     
+    }
+    else {
+        // console.log(product.incart); /* incart = 0 */
+
+        product.incart = 1
+        ProductItem = {
+            [product.name]: product /* Create JSON formate naming convention */
+        }
+    }
+    let ProductItemJSON = JSON.stringify(ProductItem); /* convert Js list to JSON file formate */
+    localStorage.setItem('AddCartProductName', ProductItemJSON); /* Add to local storage */
 
 }
 
-// Default loading cart , Count in navbar
-let DefaltLoadCart = ()=> {
+// Default loading cart , Count in navbar functiopn
+let DefaltLoadCart = () => {
     let AddCartNumber = localStorage.getItem("cartNumber");
-
-    if(AddCartNumber){
+    if (AddCartNumber) {
         document.querySelector('.card-add span').textContent = AddCartNumber;
     }
     // else{
     //     console.log("Empty cart list");
     // }
-
 }
 DefaltLoadCart(); /* Default running function  */
