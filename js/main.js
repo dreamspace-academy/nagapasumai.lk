@@ -105,6 +105,7 @@
 // Product list
 let productList = [
     {
+        id:1,
         name: 'A',
         price: 100,
         incart: 0
@@ -127,7 +128,7 @@ let productList = [
 ]
 
 
-// ADD Cart 
+// ADD Cart Number
 let Cart = document.querySelectorAll(".add-cart"); /* select all add-cart classes  =>  "add to cart" button */
 
 // Add cart
@@ -184,7 +185,7 @@ let AddCartProduct = (product) => {
             default:
                 break;
         }
-    
+
     }
     else {
         // console.log(product.incart); /* incart = 0 */
@@ -210,3 +211,38 @@ let DefaltLoadCart = () => {
     // }
 }
 DefaltLoadCart(); /* Default running function  */
+
+
+
+// Default loading cart , show product functiopn in checkout page 
+
+let ShowProduct = () => {
+    let ShowProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
+    ShowProductItem = JSON.parse(ShowProductItem);
+    console.log(ShowProductItem);
+    let HtmlPageLoad = document.querySelector('.ProductDetails');
+    let HtmlPageLoadPrice = document.querySelector('.Pricing');
+
+
+    if (ShowProductItem && HtmlPageLoad  && HtmlPageLoadPrice) {
+        HtmlPageLoad.innerHTML = ``
+        Object.values(ShowProductItem).map(MapShowProduct); /* call back MapShowProduct function */
+
+        HtmlPageLoadPrice.innerHTML = `<div class="d-flex justify-content-between mb-3 pt-1">
+        <h6 class="font-weight-medium">Subtotal</h6>
+        <h6 class="font-weight-medium"></h6>
+        </div>`
+
+    }
+
+
+
+    function MapShowProduct(Item) {
+        HtmlPageLoad.innerHTML += `
+        <div class="d-flex justify-content-between">
+        <p>${Item.name}</p>
+        <p>rs ${Item.price}</p>
+    </div>`
+    }
+}
+ShowProduct();
