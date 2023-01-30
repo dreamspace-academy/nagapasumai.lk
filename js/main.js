@@ -105,7 +105,7 @@
 // Product list
 let productList = [
     {
-        id:1,
+        id: 1,
         name: 'A',
         price: 100,
         incart: 0
@@ -138,6 +138,7 @@ for (let i = 0; i < Cart.length; i++) {
         // console.log("Add To Cart is Running");
 
         CartNumber(productList[i]);/* Call CartNumber(productList[i]); */
+        CartproductCost(productList[i]);/* Call CartproductCost(productList[i]); */
     });
 }
 
@@ -212,11 +213,23 @@ let DefaltLoadCart = () => {
 }
 DefaltLoadCart(); /* Default running function  */
 
+// Default loading to cost page
+let CartproductCost = (product)=>{
+    // let cartprice =localStorage.getItem("Price"); /* get to local storage */
+    // cartprice = parseInt(cartprice)
+    console.log(product.price);
 
+    if (cartprice != null) {
+        cartprice = parseInt(cartprice)
+        localStorage.setItem("Price", cartprice + product.price )
+    }else{
+        localStorage.setItem("Price", product.price)
+    }
+}
 
 // Default loading cart , show product functiopn in checkout page 
 
-let ShowProduct = () => {
+let ShowProduct = async () => {
     let ShowProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
     ShowProductItem = JSON.parse(ShowProductItem);
     console.log(ShowProductItem);
@@ -224,19 +237,11 @@ let ShowProduct = () => {
     let HtmlPageLoadPrice = document.querySelector('.Pricing');
 
 
-    if (ShowProductItem && HtmlPageLoad  && HtmlPageLoadPrice) {
+    if (ShowProductItem && HtmlPageLoad && HtmlPageLoadPrice) {
         HtmlPageLoad.innerHTML = ``
         Object.values(ShowProductItem).map(MapShowProduct); /* call back MapShowProduct function */
-
-        HtmlPageLoadPrice.innerHTML = `<div class="d-flex justify-content-between mb-3 pt-1">
-        <h6 class="font-weight-medium">Subtotal</h6>
-        <h6 class="font-weight-medium"></h6>
-        </div>`
-
+        
     }
-
-
-
     function MapShowProduct(Item) {
         HtmlPageLoad.innerHTML += `
         <div class="d-flex justify-content-between">
@@ -244,5 +249,6 @@ let ShowProduct = () => {
         <p>rs ${Item.price}</p>
     </div>`
     }
+
 }
 ShowProduct();
