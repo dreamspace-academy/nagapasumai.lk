@@ -171,22 +171,11 @@ let AddCartProduct = (product) => {
 
 
     if (ProductItem != null) {
-        switch (ProductItem != null) {
-            case ProductItem[product.name] == undefined:
-                ProductItem = {
-                    ...ProductItem, /* copy the ProductItem => add old ProductItem + new ProductItem */
-                    [product.name]: product /* Create JSON formate naming convention */
-                }
-                ProductItem[product.name].incart += 1;
-                break;
-            case ProductItem[product.name] === ProductItem[product.name]:
-                product.incart = 1
-                alert("no")
-                break;
-            default:
-                break;
+        ProductItem = {
+            ...ProductItem, /* copy the ProductItem => add old ProductItem + new ProductItem */
+            [product.name]: product /* Create JSON formate naming convention */
         }
-
+        ProductItem[product.name].incart += 1;
     }
     else {
         // console.log(product.incart); /* incart = 0 */
@@ -214,15 +203,13 @@ let DefaltLoadCart = () => {
 DefaltLoadCart(); /* Default running function  */
 
 // Default loading to cost page
-let CartproductCost = (product)=>{
-    // let cartprice =localStorage.getItem("Price"); /* get to local storage */
-    // cartprice = parseInt(cartprice)
-    console.log(product.price);
+let CartproductCost = (product) => {
+    let cartprice = localStorage.getItem("Price"); /* get to local storage */
 
     if (cartprice != null) {
         cartprice = parseInt(cartprice)
-        localStorage.setItem("Price", cartprice + product.price )
-    }else{
+        localStorage.setItem("Price", cartprice + product.price)
+    } else {
         localStorage.setItem("Price", product.price)
     }
 }
@@ -232,21 +219,25 @@ let CartproductCost = (product)=>{
 let ShowProduct = async () => {
     let ShowProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
     ShowProductItem = JSON.parse(ShowProductItem);
+    let cartprice = localStorage.getItem("Price"); /* get to local storage */
+    cartprice = parseInt(cartprice);
     console.log(ShowProductItem);
     let HtmlPageLoad = document.querySelector('.ProductDetails');
     let HtmlPageLoadPrice = document.querySelector('.Pricing');
 
-
-    if (ShowProductItem && HtmlPageLoad && HtmlPageLoadPrice) {
+    if (ShowProductItem && HtmlPageLoad && HtmlPageLoadPrice && cartprice) {
         HtmlPageLoad.innerHTML = ``
-        Object.values(ShowProductItem).map(MapShowProduct); /* call back MapShowProduct function */
-        
+        Object.values(ShowProductItem, cartprice).map(MapShowProduct); /* call back MapShowProduct function */
+
     }
     function MapShowProduct(Item) {
         HtmlPageLoad.innerHTML += `
         <div class="d-flex justify-content-between">
         <p>${Item.name}</p>
         <p>rs ${Item.price}</p>
+        <p>${Item.incart}</p>
+        <p>total ${Item.price * Item.incart}</p>
+        <p>total ${cartprice}</p>
     </div>`
     }
 
