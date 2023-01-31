@@ -142,10 +142,8 @@ for (let i = 0; i < Cart.length; i++) {
     });
 }
 
-
 // Add cart function
 let CartNumber = (product) => {
-
     /* productList[i] have product item { i = number :: eg = 1 , productList[i] => {name: 'A', price: 100, incart: 0} == product  } */
     // console.log(`product Details is `, product)
     let AddCartNumber = localStorage.getItem("cartNumber"); /* get to local storage */
@@ -168,8 +166,6 @@ let CartNumber = (product) => {
 let AddCartProduct = (product) => {
     let ProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
     ProductItem = JSON.parse(ProductItem); /* convert JSON file formate to Js list */
-
-
     if (ProductItem != null) {
         ProductItem = {
             ...ProductItem, /* copy the ProductItem => add old ProductItem + new ProductItem */
@@ -179,7 +175,6 @@ let AddCartProduct = (product) => {
     }
     else {
         // console.log(product.incart); /* incart = 0 */
-
         product.incart = 1
         ProductItem = {
             [product.name]: product /* Create JSON formate naming convention */
@@ -187,7 +182,6 @@ let AddCartProduct = (product) => {
     }
     let ProductItemJSON = JSON.stringify(ProductItem); /* convert Js list to JSON file formate */
     localStorage.setItem('AddCartProductName', ProductItemJSON); /* Add to local storage */
-
 }
 
 // Default loading cart , Count in navbar functiopn
