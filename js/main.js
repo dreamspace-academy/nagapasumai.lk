@@ -196,9 +196,6 @@ let DefaltLoadCart = () => {
     if (AddCartNumber) {
         document.querySelector('.card-add span').textContent = AddCartNumber;
     }
-    // else{
-    //     console.log("Empty cart list");
-    // }
 }
 DefaltLoadCart(); /* Default running function  */
 
@@ -215,7 +212,6 @@ let CartproductCost = (product) => {
 }
 
 // Default loading cart , show product functiopn in checkout page 
-
 let ShowProduct = async () => {
     let ShowProductItem = localStorage.getItem('AddCartProductName');/* get to local storage */
     ShowProductItem = JSON.parse(ShowProductItem);
@@ -224,11 +220,9 @@ let ShowProduct = async () => {
     console.log(ShowProductItem);
     let HtmlPageLoad = document.querySelector('.ProductDetails');
     let HtmlPageLoadPrice = document.querySelector('.Pricing');
-
     if (ShowProductItem && HtmlPageLoad && HtmlPageLoadPrice && cartprice) {
         HtmlPageLoad.innerHTML = ``
         Object.values(ShowProductItem, cartprice).map(MapShowProduct); /* call back MapShowProduct function */
-
     }
     function MapShowProduct(Item) {
         HtmlPageLoad.innerHTML += `
@@ -236,10 +230,13 @@ let ShowProduct = async () => {
         <p>${Item.name}</p>
         <p>rs ${Item.price}</p>
         <p>${Item.incart}</p>
-        <p>total ${Item.price * Item.incart}</p>
-        <p>total ${cartprice}</p>
-    </div>`
+        <p>${Item.price * Item.incart}</p>
+    </div>`;
+        HtmlPageLoadPrice.innerHTML = `
+        <div class="d-flex justify-content-between mb-3 pt-1">
+        <h6 class="font-weight-bold">Total price</h6>
+        <h6 class="font-weight-bold">${cartprice}</h6>
+        </div>`
     }
-
 }
 ShowProduct();
