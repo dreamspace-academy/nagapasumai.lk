@@ -105,28 +105,78 @@
 // Product list
 let productList = [
     {
-        id: 1,
-        name: 'A',
-        price: 100,
-        incart: 0
-    },
-    {
-        name: 'B',
-        price: 200,
-        incart: 0
-    },
-    {
-        name: 'C',
-        price: 300,
-        incart: 0
-    },
-    {
-        name: 'D',
+        img: "naga_pasumai_img/Product-img/Briyani Masala.png",
+        name: 'Briyani Masala',
         price: 400,
         incart: 0
-    }
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Chicken Masala.png",
+        name: 'Chicken Masala',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Chilly Powder.png",
+        name: 'Chilly Powder',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Coffee.png",
+        name: 'Coffee',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Dry ginger Coffee.png",
+        name: 'Dry ginger Coffee',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Fish Dry Masala.png",
+        name: 'Fish Dry Masala',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Garam Masala.png",
+        name: 'Garam Masala',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Health Mix.png",
+        name: 'Health Mix',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Pepper Powder.png",
+        name: 'Pepper Powder',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Rasam Powder.png",
+        name: 'Rasam Powder',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Sambar Powder.png",
+        name: 'Sambar Powder',
+        price: 400,
+        incart: 0
+    },
+    {
+        img: "naga_pasumai_img/Product-img/Turmeric Powder.png",
+        name: 'Turmeric Powder',
+        price: 400,
+        incart: 0
+    },
 ]
-
 
 // ADD Cart Number
 let Cart = document.querySelectorAll(".add-cart"); /* select all add-cart classes  =>  "add to cart" button */
@@ -221,10 +271,10 @@ let ShowProduct = async () => {
     function MapShowProduct(Item) {
         HtmlPageLoad.innerHTML += `
         <div class="d-flex justify-content-between">
-        <p>${Item.name}</p>
-        <p>rs ${Item.price}</p>
-        <p>${Item.incart}</p>
-        <p>${Item.price * Item.incart}</p>
+        <p class="col-4 ">${Item.name}</p>
+        
+        <p class="col-4 text-center">${Item.incart}</p>
+        <p class="col-4 text-right">${Item.price * Item.incart}</p>
     </div>`;
         HtmlPageLoadPrice.innerHTML = `
         <div class="d-flex justify-content-between mb-3 pt-1">
