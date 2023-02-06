@@ -3,49 +3,18 @@
     "development"
   ],
   "hints": {
-    "axe/name-role-value": "off",
     "no-inline-styles": "off",
-    "axe/parsing": [
+    "axe/name-role-value": [
       "default",
       {
-        "marquee": "off"
-      }
-    ],
-    "button-type": "off",
-    "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "backface-visibility"
-        ]
+        "link-name": "off"
       }
     ],
     "axe/forms": [
       "default",
       {
-        "select-name": "off",
         "label": "off"
       }
-    ],
-    "disown-opener": "off",
-    "compat-api/html": [
-      "default",
-      {
-        "ignore": [
-          "img[loading]"
-        ]
-      }
     ]
-  },
-  "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not and_chr <= 106",
-    "not chrome <= 107",
-    "not edge <= 106",
-    "not firefox <= 106",
-    "not safari <= 16.1",
-    "not samsung <= 18",
-    "not and_ff <= 105"
-  ]
+  }
 }

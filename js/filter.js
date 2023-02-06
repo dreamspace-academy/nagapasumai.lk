@@ -1,4 +1,4 @@
-let filter_btns = document.querySelectorAll('.dropdown-item');
+let filter_btns = document.querySelectorAll('.filter-heading');
 let projects = document.querySelectorAll('.filter-item');
 
 filter_btns.forEach((filter_btn) => {
